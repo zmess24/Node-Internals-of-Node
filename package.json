@@ -1,0 +1,23 @@
+{
+  "name": "event_loop",
+  "version": "1.0.0",
+  "description": "JavaScript code that we write: 100% JS.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zmess24/Node-Internals-of-Node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zmess24/Node-Internals-of-Node/issues"
+  },
+  "homepage": "https://github.com/zmess24/Node-Internals-of-Node#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
