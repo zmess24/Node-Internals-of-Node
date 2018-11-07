@@ -9,7 +9,7 @@
 | -c 50 =  Make sure there are always 50 requests pending (concurrency)
 |--------------------------------------------------
 */
-// Every child in cluster only has one thread avaialble
+// set every child in cluster to only have one thread available
 process.env.UV_THREADPOOL_SIZE = 1;
 const cluster = require('cluster');
 // Is the file being executed in master mode
