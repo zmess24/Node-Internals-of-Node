@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/zmess24/Node-Internals-of-Node#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "webworker-threads": "^0.7.17"
   }
 }
