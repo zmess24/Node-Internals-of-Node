@@ -2,13 +2,15 @@
 |--------------------------------------------------
 | BENCHMARKING:
 |
-| `ab -c 50 -n 500 localhost:3000/fast`
+| command: `ab -c 50 -n 500 localhost:3000/fast`
+|
 | - ab = apache benchmark
 | -n 500 = Make a total of 500 request
 | -c 50 =  Make sure there are always 50 requests pending (concurrency)
 |--------------------------------------------------
 */
-
+// Every child in cluster only has one thread avaialble
+process.env.UV_THREADPOOL_SIZE = 1;
 const cluster = require('cluster');
 // Is the file being executed in master mode
 if (cluster.isMaster) {
@@ -23,15 +25,11 @@ if (cluster.isMaster) {
     // and do nothing else.
     const 
         express = require('express'),
+        crypto = require('crypto'),
         app = express();
 
-    function doWork(duration) {
-        const start = Date.now();
-        while (Date.now() - start < duration) {}
-    }
     app.get('/', (req, res) => {
-        doWork(5000); // Handled by the event loop
-        res.send('Hi there');
+        crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => res.send('Hi there'))
     });
 
     app.get('/fast', (req, res) => {
