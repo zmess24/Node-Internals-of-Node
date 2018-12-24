@@ -7,7 +7,6 @@
 |--------------------------------------------------
 */
 
-
 const pendingTimers = [];
 const pendingOSTasks = [];
 const pendingOperations = [];

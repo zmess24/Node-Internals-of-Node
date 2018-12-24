@@ -1,3 +1,9 @@
+/**
+|--------------------------------------------------
+| Question: What order will this code execute in?
+|--------------------------------------------------
+*/
+
 const 
     https = require('https'),
     crypto = require('crypto'),
@@ -19,12 +25,11 @@ function doHash() {
     });
 };
 
-doRequest();
-
 fs.readFile('multitask.js', 'utf8', () => {
     console.log('FS:', Date.now() - start);
 });
 
+doRequest();
 doHash();
 doHash();
 doHash();
@@ -37,3 +42,8 @@ doHash();
 |--------------------------------------------------
 */
 
+// 1. HTTP Module doesn't involve the threadpool, makes use of underlying OS.
+// 2. Thread #1 starts working on FS call (reach out to HD).
+// 3. FS call pops off thread #1 while awaiting data, starts working on Hash #4.
+// 4. Thread #2 finishes up, repicks up FS Module.
+// 5. Thread #2 finishes FS call, threads #1,#3,#4 resolve hash calls.

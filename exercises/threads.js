@@ -5,7 +5,7 @@
 */
 
 // Changes the threadpool size to 2 instead of the default 4
-process.env.UV_THREADPOOL_SIZE = 1;
+process.env.UV_THREADPOOL_SIZE = 6;
 
 const crypto = require('crypto');
 
