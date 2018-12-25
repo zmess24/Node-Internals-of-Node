@@ -7,12 +7,12 @@ const dns = require('dns');
 | Translate networks to addresses, and vice versa.
 |--------------------------------------------------
 */
-// 1. Gives us the IP address for provided name.
+// 1. Gives us the IP address for provided hostname.
 dns.lookup('pluralsight.com', (err, address) => {
     console.log(address);
 });
 
-// 2. Gives us an array of addresses in cases the website has multiple IP addresses.
+// 2. Gives us an array of addresses in cases the hostname has multiple IP addresses.
 // Defaults to 'A' records.
 dns.resolve4('pluralsight.com', (err, address) => {
     console.log(address);
@@ -23,6 +23,7 @@ dns.resolveMx('pluralsight.com', (err, address) => {
     console.log(address);
 });
 
+// 4. Translates an IP address back into hostnames
 dns.reverse('54.213.183.159', (err, hostnames) => {
     console.log(hostnames)
 })
