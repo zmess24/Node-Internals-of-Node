@@ -28,9 +28,9 @@ class Server extends EventEmitter {
 
     help() {
         this.emit('response', `Available Commands:
-        add task
-        ls
-        delete :id
+            add task
+            ls
+            delete :id
         `)
     }
 
@@ -47,12 +47,12 @@ class Server extends EventEmitter {
     }
 
     ls(args) {
-      this.emit('response', `Tasks:\n${this.tasksString()}`)
+        this.emit('response', `Tasks:\n${this.tasksString()}`)
     }
 
     delete(args) {
         delete(this.tasks[args[0]]);
-      this.emit('response', `Deleted task ${args[0]}`);
+        this.emit('response', `Deleted task ${args[0]}`);
     }
 };
 

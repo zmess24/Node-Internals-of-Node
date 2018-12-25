@@ -2,6 +2,7 @@ const
     EventEmitter = require('events'),
     readLine = require('readline');
 
+// Creates an instance of the readline interface.
 const rl = readLine.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -19,6 +20,7 @@ server.on('response', resp => {
 });
 
 let command, args;
+
 rl.on('line', (input) => {
     [command, ...args] = input.split(' ');
     client.emit('command', command, args)
